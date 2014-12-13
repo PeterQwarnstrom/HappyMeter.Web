@@ -2,8 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+	<script src="Scripts/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-	Peter was here!
+	<script>
+		$(function () {
+			//var result = getMoodsByAjax();
+			//console.log('result');
+			//console.log(result);
+			//$("#moods").html(result);
+			////alert(getMoodsByAjax());
+
+			jQuery.ajax({
+				url: 'http://happymeter.apphb.com/Skandia/Moods/',
+				type: 'GET',
+				dataType: 'jsonp',
+				async: false,
+				success: function (response) {
+					console.log(response[0]);
+					$("#moods").html(response[0].id);
+				}
+			});
+		});
+
+	</script>
+	<div id="moods"></div>
+	<script src="Scripts/App/ApiRepository.js"></script>
+
 </body>
 </html>
